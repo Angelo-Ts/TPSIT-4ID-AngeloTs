@@ -1,4 +1,3 @@
-import Es3.MyFrame;
 
 public class EsSwing2 {
     public static void main(String[] args) {
