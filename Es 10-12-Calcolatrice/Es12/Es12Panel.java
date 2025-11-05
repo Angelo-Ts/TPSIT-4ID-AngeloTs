@@ -34,3 +34,4 @@ class Es12Panel extends JPanel implements DocumentListener {
 }
 
 // implementazione formale
+
