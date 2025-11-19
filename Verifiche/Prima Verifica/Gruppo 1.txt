@@ -1,0 +1,5 @@
+1) Si scriva un'applicazione Java con interfaccia grafica SWING che implementi 50 bottoni che rappresentano 50 colori a piacere distribuiti in una griglia 5x10. 
+Il click a ogni pulsante dovrà colorare il proprio contenitore del colore corrispondente.
+Suggerimento: settare a null il layout del contenitore (setLayout(null))
+
+La sufficienza si ottiene svolgendo correttamente l'esercizi. Integrazione, tempi di consegna e chiarezza espositiva (commenti e indentazione codice) incrementano il punteggio.
