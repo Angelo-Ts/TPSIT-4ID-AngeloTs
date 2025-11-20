@@ -118,7 +118,7 @@ public class MyPanel extends JPanel implements ActionListener{
 
     public MyPanel(){
         super();
-        setLayout(new GridLayout(5, 10, 10, 10));
+        
         setBounds(600, 300, 1000, 400);
         b =  new JButton[50];
         rand = new Random();
