@@ -6,8 +6,12 @@ public class Main{
 
         JFrame f = new JFrame("Esercizio");
         f.setSize(1020, 550);
+    
         f.add(new MyPabel());
+        
+        //f.setVisible(true);
 
-        f.setVisible(true);
+        MyFrame f2 = new MyFrame();
+        f2.setVisible(true);
     }
 }
