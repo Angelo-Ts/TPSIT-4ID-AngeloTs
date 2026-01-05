@@ -1,10 +1,7 @@
-
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
-
-
 
 public class MyFrame extends JFrame implements ActionListener{
     JTextField  t1;
@@ -48,6 +45,7 @@ public class MyFrame extends JFrame implements ActionListener{
             JDialog d1 = new JDialog();
             d1.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
             d1.setSize(250, 250);
+            d1.setLayout(new GridLayout(2, 1));
             d1.add(new JLabel(t1.getText()));
             d1.add(new JLabel(t2.getText()));
             d1.setVisible(true);
