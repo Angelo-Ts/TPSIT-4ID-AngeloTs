@@ -9,7 +9,7 @@ public class Main{
     
         f.add(new MyPabel());
         
-        //f.setVisible(true);
+        f.setVisible(true);
 
         MyFrame f2 = new MyFrame();
         f2.setVisible(true);
