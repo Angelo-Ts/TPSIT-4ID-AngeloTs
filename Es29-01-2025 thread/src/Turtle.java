@@ -18,7 +18,7 @@ public class Turtle extends JPanel{
         this.tela = tela;
     }
 
-    public void forward (int len){
+    public void forward (double len){
         Graphics2D g = (Graphics2D) tela.getGraphics();
 
         double radians = (Math.PI / 180) * this.angle;
