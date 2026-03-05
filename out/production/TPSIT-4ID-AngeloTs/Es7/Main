@@ -1,0 +1,12 @@
+import java.awt.*; import javax.swing.*;
+import java.awt.event.*;
+// bisogna importare il package degli eventi!
+public class EsSwing8 {
+    public static void main(String[] v){
+        JFrame f = new JFrame(”Esempio 7");
+        Container c = f.getContentPane();
+        Es8Panel p = new Es8Panel();
+        c.add(p);
+        f.pack(); f.show();
+    } 
+}

@@ -1,0 +1,19 @@
+20/11/2025
+
+Eventi:
+interazione tra utente e programma avviene con generazione di eventi e la cattura grazie ad un ascoltatore
+Bottoni, finestre, textfield… possono generare eventi quando avviene una determinata azione
+
+Interazione tra utente e GUI, viene generato un messaggio dalla java virtual Machine, bisogna stabilire il ricevitore del messaggio:
+
+Genera l'evento (ActionEvent) 
+Controlla che ci sia qualcosa associato un ascoltatore al pulsante che ha generato l'evento, se non è presente un ascoltatore, viene generato l'oggetto ActionEvent ma non fa nulla
+Se esiste un ascoltatore, viene invocato dalla JVM il metodo per la gestione dello specifico evento (ActionPerform per i pulsanti, viene passato come parametro l'evento che l'ha generato )(WindowEvent va associato a WinodwListener)
+
+
+
+FlowLayout, GridLayout (Tabella righe x colonne, chiamo add e occupo una nuova cella), GridBagLayout (Personalizza anche la dimensione delle celle…), BoxLayout (O colonna o in riga), 
+BorderLayout (Divide la finestra in 5 aree, nord, sud, est, over, center, dovrò specificare in quale area aggiungere l'elemento)
+
+
+Menù, JMenuBar, puoi inserire altri menu, o un oggetto MenuItem (Oggetti contenuti nei menu) oppure 

@@ -1,0 +1,96 @@
+import java.awt.*;
+import javax.swing.*;
+
+public class FunctionPanel extends JPanel {
+    // Intervalli di rappresentazione
+    private int xMin = -7, xMax = 7;
+    private int yMin = -1, yMax = 1;
+
+    // Dimensioni della finestra
+    private int larghezza = 500, altezza = 400;
+
+    // Fattori di scala
+    private float fattoreScalaX, fattoreScalaY;
+
+    // Costruttore
+    public FunctionPanel() {
+        setPreferredSize(new Dimension(larghezza, altezza));
+        setBackground(Color.white);
+    }
+
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+
+        // Calcolo dei fattori di scala
+        fattoreScalaX = larghezza / ((float) xMax - xMin);
+        fattoreScalaY = altezza / ((float) yMax - yMin);
+
+        // Incornicia il grafico in nero
+        g.setColor(Color.black);
+        g.drawRect(0, 0, larghezza - 1, altezza - 1);
+
+        // Disegna gli assi cartesiani
+        g.setColor(Color.red);
+        g.drawLine(0, altezza / 2, larghezza - 1, altezza / 2);
+        g.drawLine(larghezza / 2, 0, larghezza / 2, altezza - 1);
+
+        // Etichette degli assi
+        g.drawString("" + xMin, 5, altezza / 2 - 5);
+        g.drawString("" + xMax, larghezza - 25, altezza / 2 - 5);
+        g.drawString("" + yMax, larghezza / 2 + 5, 15);
+        g.drawString("" + yMin, larghezza / 2 + 5, altezza - 5);
+
+        // Disegna il grafico della funzione in blu
+        g.setColor(Color.blue);
+
+        float xPrev = xMin;
+        float yPrev = f(xPrev);
+
+        for (int ix = 1; ix < larghezza; ix++) {
+            float x = xMin + ((float) ix) / fattoreScalaX;
+            float y = f(x);
+
+            // Disegna una linea tra due punti consecutivi per un tratto più continuo
+            drawLine(g, xPrev, yPrev, x, y);
+
+            xPrev = x;
+            yPrev = y;
+        }
+    }
+
+    // Funzione da graficare (modificabile)
+    private static float f(float x) {
+        return (float) Math.sin(x);
+    }
+
+    // Converte coordinate logiche in pixel e disegna un punto
+    private void setPixel(Graphics g, float x, float y) {
+        if (x < xMin || x > xMax || y < yMin || y > yMax) return;
+
+        int ix = Math.round((x - xMin) * fattoreScalaX);
+        int iy = altezza - Math.round((y - yMin) * fattoreScalaY);
+
+        g.drawLine(ix, iy, ix, iy);
+    }
+
+    // Variante che disegna una linea tra due punti logici
+    private void drawLine(Graphics g, float x1, float y1, float x2, float y2) {
+        int ix1 = Math.round((x1 - xMin) * fattoreScalaX);
+        int iy1 = altezza - Math.round((y1 - yMin) * fattoreScalaY);
+        int ix2 = Math.round((x2 - xMin) * fattoreScalaX);
+        int iy2 = altezza - Math.round((y2 - yMin) * fattoreScalaY);
+
+        g.drawLine(ix1, iy1, ix2, iy2);
+    }
+
+    // Test rapido
+    public static void main(String[] args) {
+        JFrame frame = new JFrame("Grafico f(x) = sin(x)");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.add(new FunctionPanel());
+        frame.pack();
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
+    }
+}

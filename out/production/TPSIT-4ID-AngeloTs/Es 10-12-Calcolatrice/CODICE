@@ -1,0 +1,111 @@
+import java.awt.*; /swing.*;
+JFrame f = new JFrame("Esempio 1"); //invisibile
+f.show;
+f.setSize(new Dimension(300,150)); //x,y in pixel
+f.setLocation(200,100); //(0,0) angolo sinistro alto
+setBounds() ---> unisce setLocation e Size
+
+public class MyFrame extends JFrame{
+	public MyFrame(){
+		super(); setBounds(200,100,300,150);
+	}
+	public MyFrame(String titolo){
+		super(titolo);
+		setBounds(200,100, 300,150);
+		}
+}
+------------------------------------------
+public class MyPanel extends JPanel {
+	public void paintComponent(Graphics g){
+		super.paintComponent(g);
+		g.setColor(Color.red);
+		g.fillRect(20,20, 100,80);
+		g.setColor(Color.blue);
+		g.drawRect(30,30, 80,60);
+		g.setColor(Color.black);
+		g.drawString("ciao",50,60);
+	}
+}
+------------------------------------------
+public class Es7Panel extends JPanel implements ActionListener{ //LABEL 
+	private JLabel l;
+	public Es7Panel(){
+		super();
+		l = new JLabel("Etichetta"); //Tizio
+		add(l);
+		JButton b = new JButton("Tizio/Caio");
+		b.addActionListener(this);
+		//b.addActionListener(new Es8Listener(l));
+		add(b);
+	}
+	public void actionPerformed(ActionEvent e){
+		if (l.getText().equals("Tizio"){
+			l.setText("Caio");
+		}else{
+			l.setText("Tizio");
+		}
+	}
+}
+------------------------------------------
+public static void main(String[] v){ import java.awt.event.*;
+	MyFrame f = new MyFrame("Esempio 3");
+	Container c = f.getContentPane();  //a lui vanno aggiunti i componenti
+	JPanel panel = new JPanel();
+	MyPanel panel = new myPanel();
+	c.add(panel);
+	f.pack(); //pack dimensiona il frame per contenere esattamente il panel
+	f.show();
+	
+	JFrame f = new JF("ES7");
+	Container c = f.getContentPane();
+	Es8Panel p = new Es8Panel();
+	c.add(p);
+	f.addWindowListener( new Terminator() );
+	f.pack(); f.show();
+}
+-----------------------------------------
+class Es8Listener implements ActionListener{
+	public void actionPerformed(ActionEvent e){
+		if (l.getText().equals("Tizio"))
+			l.setText("Caio");
+		else
+			l.setText("Tizio");
+	}
+	private JLabel l;
+	public Es8Listener(JLabel label){
+	l=label;}
+	// deve farsi dare come parametro la Jlabel su cui andare ad agire
+}
+-----------------------------------------
+class Terminator implements WindowListener {
+	public void windowClosed(WindowEvent e){}
+	public void windowClosing(WindowEvent e){
+		System.exit(0);
+		}
+	public void windowOpened(WindowEvent e){}
+	public void windowIconified(WindowEvent e){}		
+	
+	public void windowDeiconified(WindowEvent e){}
+	public void windowActivated(WindowEvent e){}
+	public void windowDeactivated(WindowEvent e){}
+}
+-----------------------------------------
+public class ImgPanel extends JPanel { //immagini
+	Image img1;	
+	public ImgPanel(){
+		Toolkit tk = Toolkit.getDefaultToolkit();
+		img1 = tk.getImage("new.gif");
+		MediaTracker mt = new MediaTracker(this);
+		mt.addImage(img1, 1);
+		// aggiunta di eventuali altre immagini
+		try { mt.waitForAll(); }
+		catch (InterruptedException e){
+		}
+	public void paintComponent(Graphics g){
+		super.paintComponent(g);
+		g.drawImage(img1, 30, 30, null);
+		/* Immagine (img1), posizione nel pannello (30,30)
+		e un oggetto (null, cioè nessuno) a cui notificare
+		l'avvenuto caricamento */
+	}
+}
