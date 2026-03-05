@@ -1,3 +1,4 @@
+package ES1;
 
 public class CallContatore {
     public static void main(String[] args) throws InterruptedException {
@@ -14,6 +15,7 @@ public class CallContatore {
             for (int i = 0; i < incremento; i++){
                 c.incrementa();
             }
+
         });
 
         t1.start();
